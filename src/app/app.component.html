@@ -1,0 +1,26 @@
+<div class="App">
+  <header class="App-header">
+    <img src='assets/logo.png' class="App-logo" alt="logo" />
+    <h1 class="App-title">Hello RVNBOX</h1>
+  </header>
+  <div class='App-content'>
+    <h2>BIP44 $RVN Wallet</h2>
+    <h3>256 bit {{lang}} BIP39 Mnemonic:</h3> <p>{{mnemonic}}</p>
+    <h3>BIP44 Account</h3>
+    <p>
+      <code>
+      "m/44'/145'/0'"
+      </code>
+    </p>
+    <h3>BIP44 external change addresses</h3>
+    <ul>
+      <li *ngFor="let address of addresses">
+        {{ address }}
+      </li>
+    </ul>
+    <h3>Transaction raw hex</h3>
+    <p>{{hex}}</p>
+    <h3>Transaction ID</h3>
+    <p>{{txid}}</p>
+  </div>
+</div><router-outlet></router-outlet>

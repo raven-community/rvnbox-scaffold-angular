@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: red;
+}
+
+.App-logo {
+  height: 80px;
+}
+
+.App-header {
+  text-align: center;
+  background-color: #2d3e50;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.App-content {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.App ul, .App h2 {
+  text-align: left;
+}
