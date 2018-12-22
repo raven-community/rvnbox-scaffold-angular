@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import RVNBOXSDK = require("bitbox-sdk/lib/bitbox-sdk");
+import RVNBOXSDK = require("rvnbox-sdk/lib/rvnbox-sdk");
 
 let RVNBOX = new RVNBOXSDK.default();
 
@@ -26,16 +26,16 @@ let rootSeed = RVNBOX.Mnemonic.toSeed(mnemonic);
 let masterHDNode = RVNBOX.HDNode.fromSeed(rootSeed, "ravencoin");
 
 // HDNode of BIP44 account
-let account = RVNBOX.HDNode.derivePath(masterHDNode, "m/44'/145'/0'");
+let account = RVNBOX.HDNode.derivePath(masterHDNode, "m/0'/175'/0'");
 
 // derive the first external change address HDNode which is going to spend utxo
 let change = RVNBOX.HDNode.derivePath(account, "0/0");
 
-// get the rvn2 address
-let rvn2Address = RVNBOX.HDNode.toRvn2Address(change);
+// get the Legacy address
+let LegacyAddress = RVNBOX.HDNode.toLegacyAddress(change);
 
 @Component({
-  selector: "bitbox",
+  selector: "rvnbox",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
@@ -49,7 +49,7 @@ export class AppComponent {
     this.mnemonic = mnemonic;
     this.lang = lang;
 
-    RVNBOX.Address.utxo(rvn2Address).then(
+    RVNBOX.Address.utxo(LegacyAddress).then(
       result => {
         if (!result[0]) {
           return;
@@ -81,7 +81,7 @@ export class AppComponent {
         let sendAmount = originalAmount - byteCount;
 
         // add output w/ address and amount to send
-        transactionBuilder.addOutput(rvn2Address, sendAmount);
+        transactionBuilder.addOutput(LegacyAddress, sendAmount);
 
         // keypair
         let keyPair = RVNBOX.HDNode.toKeyPair(change);
@@ -116,9 +116,9 @@ export class AppComponent {
       }
     );
     for (let i = 0; i < 10; i++) {
-      let account = masterHDNode.derivePath("m/44'/145'/0'/0/" + i);
+      let account = masterHDNode.derivePath("m/0'/175'/0'/0/" + i);
       this.addresses.push(
-        "m/44'/145'/0'/0/" + i + ": " + RVNBOX.HDNode.toRvn2Address(account)
+        "m/0'/175'/0'/0/" + i + ": " + RVNBOX.HDNode.toLegacyAddress(account)
       );
     }
   }
