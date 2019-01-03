@@ -1,6 +1,6 @@
 {
   "name": "rvnbox-scaffold-angular",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "Basic angular app w/ RVNBOX bindings",
   "author": "MSFTserver",
@@ -40,7 +40,7 @@
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
-    "rvnbox-sdk": "github:raven-community/rvnbox-javascript-sdk#master",
+    "rvnbox-sdk": "^1.0.2",
     "codelyzer": "^4.0.1",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
